@@ -1,0 +1,5 @@
+<app-range-selector
+  (rangeChange)="onRangeChange($event)"
+  [statistics$]="statistics$"
+></app-range-selector>
+<app-statistics-table [statistics$]="statistics$"></app-statistics-table>

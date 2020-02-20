@@ -1,0 +1,51 @@
+<div class="range-selector">
+  <dx-range-selector
+    id="range-selector"
+    (onValueChanged)="onRangeChange($event)"
+    title="Вибір часового проміжку"
+    [dataSource]="statistics"
+  >
+    <dxo-size [height]="200"></dxo-size>
+    <dxo-scale
+      [startValue]="startDate"
+      [endValue]="endDate"
+      minorTickInterval="minute"
+      tickInterval="5minute"
+      minRange="minute"
+      maxRange="day"
+    >
+      <dxo-label format="HH:mm dd.MM.yyyy"></dxo-label>
+      <dxo-marker>
+        <dxo-label format="HH:mm dd.MM.yyyy"></dxo-label>
+      </dxo-marker>
+      <dxo-minor-tick [visible]="false"></dxo-minor-tick>
+    </dxo-scale>
+    <dxo-chart>
+      <dxo-legend></dxo-legend>
+      <dxo-common-series-settings
+        hoverMode="allArgumentPoints"
+        type="bar"
+        [ignoreEmptyPoints]="true"
+        [barOverlapGroup]="true"
+      >
+      </dxo-common-series-settings>
+      <dxi-series
+        argumentField="createdAt"
+        valueField="startFailed"
+        color="#7e57c2"
+      ></dxi-series>
+      <dxi-series
+        argumentField="createdAt"
+        valueField="midFailed"
+        color="#d500f9"
+      ></dxi-series>
+      <dxi-series
+        argumentField="createdAt"
+        valueField="endFailed"
+        color="#1e88e5"
+      ></dxi-series>
+      <dxo-value-axis [min]="0"></dxo-value-axis>
+    </dxo-chart>
+    <dxo-slider-marker format="HH:mm dd.MM.yyyy"></dxo-slider-marker>
+  </dx-range-selector>
+</div>
