@@ -1,0 +1,39 @@
+.statistics-table {
+  width: calc(100% - 30px);
+  margin: auto;
+  max-height: 470px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.status-bar {
+  padding-right: 15px;
+}
+
+.status {
+  width: calc(100% / 3 - 3px);
+  height: 10px;
+  display: inline-block;
+  &:not(:last-child) {
+    border-right: 1px solid white;
+  }
+
+  &.ok {
+    background-color: #00c853;
+  }
+
+  &.info {
+    background-color: #ffc107;
+  }
+
+  &.warn {
+    background-color: #f57c00;
+  }
+
+  &.danger {
+    background-color: #dd2c00;
+  }
+}
