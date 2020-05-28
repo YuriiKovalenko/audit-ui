@@ -1,0 +1,10 @@
+{
+  "name": "audit-ui",
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://audit-core.herokuapp.com/$1"
+    }
+  ]
+}
