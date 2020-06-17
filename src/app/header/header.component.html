@@ -1,3 +1,16 @@
-<mat-toolbar class="mat-elevation-z6" color="primary">
-  <h3>Облік підприємства</h3>
+<mat-toolbar class="mat-elevation-z6">
+  <h3>Черкаський консервний завод. Цех №1</h3>
+  <img class="logo" src="assets/logo.svg" alt="">
+  <div class="nav-container">
+    <div *ngIf="currentUser" class="nav">
+      <div>Користувач: {{ currentUser.username }}</div>
+      <button mat-button (click)="goAudit()" *ngIf="router.url !== '/audit'">
+        Облік
+      </button>
+      <button mat-button (click)="goSetup()" *ngIf="currentUser.isAdmin && router.url !== '/rules'">
+        Налаштування
+      </button>
+      <button mat-button (click)="signOut()">Вийти</button>
+    </div>
+  </div>
 </mat-toolbar>

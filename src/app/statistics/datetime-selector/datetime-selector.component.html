@@ -1,1 +1,27 @@
-<mat-toolbar></mat-toolbar>
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      [ngxMatDatetimePicker]="pickerStart"
+      placeholder="Початкова дата"
+      formControlName="startDate"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="pickerStart"
+    ></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker [showSeconds]="true" #pickerStart>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [ngxMatDatetimePicker]="pickerEnd"
+      placeholder="Кінцева дата"
+      formControlName="endDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker [showSeconds]="true" #pickerEnd>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+</form>

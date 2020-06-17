@@ -13,7 +13,6 @@ export class ApiInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log('a');
     return next.handle(
       request.clone({
         url: `/api${request.url}`

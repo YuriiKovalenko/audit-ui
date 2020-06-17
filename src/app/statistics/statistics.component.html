@@ -1,4 +1,16 @@
-<app-datetime-selector
-  [timeRange]="displayTimeRangeChange"
-></app-datetime-selector>
-<app-statistics-table [statistics$]="statistics$"></app-statistics-table>
+<mat-drawer-container class="stats-container">
+  <mat-drawer #drawer mode="side" [opened]="true">
+    <app-datetime-selector
+      [timeRange]="timeRangeChange"
+    ></app-datetime-selector>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-scheme [stateChange]="schemeStateChange.asObservable()"></app-scheme>
+    <app-statistics-table
+      *ngIf="rules"
+      [statistics$]="statistics$"
+      [rules]="rules"
+      [schemeStateChange]="schemeStateChange"
+    ></app-statistics-table>
+  </mat-drawer-content>
+</mat-drawer-container>

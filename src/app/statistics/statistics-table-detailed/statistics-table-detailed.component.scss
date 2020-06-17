@@ -1,0 +1,20 @@
+.statistics-table {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-readyFailed,
+.mat-column-fillFailed,
+.mat-column-inspectFailed {
+  background-color: #ededed;
+  text-align: center;
+}
+
+.mat-column-start {
+  padding-left: 10px;
+}

@@ -1,4 +1,21 @@
 mat-toolbar {
   height: 50px;
   position: relative;
+  justify-content: space-between;
+  background-color: #006938;
+  background-image: url(/assets/header.png);
+  color: white;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-container {
+  width: 373.5px;
+}
+
+.logo {
+  height: 85%;
+  margin: 3px 0;
 }

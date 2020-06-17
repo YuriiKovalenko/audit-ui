@@ -1,7 +1,7 @@
 .statistics-table {
   width: calc(100% - 30px);
   margin: auto;
-  max-height: 470px;
+  height: calc(100% - 260px);
   overflow: auto;
 }
 
@@ -14,11 +14,13 @@ table {
 }
 
 .status {
-  width: calc(100% / 3 - 3px);
+  width: calc(100% / 3 - 8px);
   height: 10px;
+  cursor: pointer;
   display: inline-block;
+  border-radius: 5px;
   &:not(:last-child) {
-    border-right: 1px solid white;
+    margin-right: 1px;
   }
 
   &.ok {
@@ -36,4 +38,8 @@ table {
   &.danger {
     background-color: #dd2c00;
   }
+}
+
+.line-indicator {
+  color: #f44336;
 }

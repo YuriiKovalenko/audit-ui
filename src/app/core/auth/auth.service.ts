@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { User } from './user.model';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +11,14 @@ import { of } from 'rxjs';
 export class AuthService {
   private readonly apiUrl: string;
   private currentUser: User;
+  private userChanges: Subject<User>;
 
-  constructor(private readonly http: HttpClient, private readonly router: Router) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly router: Router
+  ) {
     this.apiUrl = '/auth';
+    this.userChanges = new Subject();
   }
 
   public login(username: string, password: string) {
@@ -21,15 +26,27 @@ export class AuthService {
       .post<{ accessToken: string }>(
         `${this.apiUrl}/login`,
         { username, password },
-        { headers: { Authorization: 'No auth' } },
+        { headers: { Authorization: 'No auth' } }
       )
-      .pipe(tap((response) => this.setToken(response.accessToken)), tap(() => this.router.navigate(['/'])));
+      .pipe(
+        tap((response) => this.setToken(response.accessToken)),
+        tap(() => this.router.navigate(['/']))
+      );
   }
 
   public getCurrentUser() {
     return this.currentUser
       ? of(this.currentUser)
-      : this.http.get<User>(`${this.apiUrl}/validate`).pipe(tap((user) => (this.currentUser = user)));
+      : this.http.get<User>(`${this.apiUrl}/validate`).pipe(
+          tap((user) => {
+            this.currentUser = user;
+            this.userChanges.next(user);
+          })
+        );
+  }
+
+  public getUserChanges() {
+    return this.userChanges.asObservable();
   }
 
   public getToken() {
@@ -43,6 +60,7 @@ export class AuthService {
   public unauthorize() {
     localStorage.removeItem('token');
     this.currentUser = null;
+    this.userChanges.next(null);
     this.router.navigate(['/auth']);
   }
 }

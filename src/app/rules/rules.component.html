@@ -1,1 +1,33 @@
-<p>rules works!</p>
+<div class="rules">
+  <mat-card>
+    <mat-card-title>
+      Правила допустимих значень
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let rule of rules">
+          <div class="rule">
+            <div>{{ rule.description }}</div>
+            <div>
+              <mat-form-field>
+                <mat-label>Ok</mat-label>
+                <input type="number" matInput [(ngModel)]="rule.ok" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Normal</mat-label>
+                <input type="number" matInput [(ngModel)]="rule.normal" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Danger</mat-label>
+                <input type="number" matInput [(ngModel)]="rule.danger" />
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="saveRules()">Зберегти</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
