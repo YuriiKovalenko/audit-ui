@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
 import { take } from 'rxjs/operators';
+
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-datetime-selector',

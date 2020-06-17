@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { StatisticsService } from '../statistics.service';
 import { Observable } from 'rxjs';
-import { Statistics } from '../statistics.model';
+
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { Statistics } from '../statistics.model';
+import { StatisticsService } from '../statistics.service';
 
 @Component({
   selector: 'app-statistics-table-detailed',

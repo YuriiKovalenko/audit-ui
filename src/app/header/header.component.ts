@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../core/auth/auth.service';
 import { User } from '../core/auth/user.model';
-import { Subscription } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +22,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    window['test'] = this;
     this.userSubscription = this.authService.getUserChanges().subscribe(
       (user) =>
         (this.currentUser = user && {

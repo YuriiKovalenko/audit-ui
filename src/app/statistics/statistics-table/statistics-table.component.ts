@@ -1,12 +1,14 @@
+import { addSeconds } from 'date-fns';
 import { Observable, Subject } from 'rxjs';
 
 import { Component, Input, OnInit } from '@angular/core';
-
-import { Statistics } from '../statistics.model';
-import { Rule } from '../../rules/rule.model';
 import { MatDialog } from '@angular/material/dialog';
-import { addSeconds } from 'date-fns';
-import { StatisticsTableDetailedComponent } from '../statistics-table-detailed/statistics-table-detailed.component';
+
+import { Rule } from '../../rules/rule.model';
+import {
+  StatisticsTableDetailedComponent
+} from '../statistics-table-detailed/statistics-table-detailed.component';
+import { Statistics } from '../statistics.model';
 
 @Component({
   selector: 'app-statistics-table',

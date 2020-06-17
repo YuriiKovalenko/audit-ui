@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { User } from './user.model';
-import { Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',

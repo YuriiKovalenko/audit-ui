@@ -1,14 +1,14 @@
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { DataSource } from '@angular/cdk/table';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Rule } from '../rules/rule.model';
+import { RulesService } from '../rules/rules.service';
 import { Statistics } from './statistics.model';
 import { StatisticsService } from './statistics.service';
-import { RulesService } from '../rules/rules.service';
-import { Rule } from '../rules/rule.model';
 
 const MILLISECONDS_IN_HOUR = 3600 * 1000;
 

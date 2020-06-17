@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth/auth.component';
-import { AuthGuard } from './core/auth/auth.guard';
-import { StatisticsComponent } from './statistics/statistics.component';
 import { AdminGuard } from './core/auth/admin.guard';
-import { RulesComponent } from './rules/rules.component';
+import { AuthGuard } from './core/auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RulesComponent } from './rules/rules.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
   {

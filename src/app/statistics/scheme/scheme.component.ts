@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Observable, Subscription, timer, Subject } from 'rxjs';
-import { tap, switchMap, pluck, map, delay } from 'rxjs/operators';
+import { Observable, Subject, Subscription, timer } from 'rxjs';
+import { delay, map, pluck, switchMap, tap } from 'rxjs/operators';
+
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scheme',
