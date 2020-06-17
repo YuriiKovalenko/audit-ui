@@ -43,7 +43,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     const range: [Date, Date] = [subHours(now, 12), now];
     this.timeRangeChange = new BehaviorSubject(range);
     this.schemeStateChange = new Subject();
-    this.rulesService.getRules().subscribe((rules) => {
+    this.rulesService.getRules().subscribe(rules => {
       this.rules = rules;
     });
     this.statistics$ = combineLatest([

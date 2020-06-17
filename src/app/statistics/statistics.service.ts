@@ -39,7 +39,7 @@ export class StatisticsService {
         ...stat,
         start: stat.data[3],
         covered: stat.data[11] + stat.data[12] + stat.data[13],
-        checked: stat.data[1] + stat.data[2] + stat.data[3],
+        checked: stat.data[0] + stat.data[1] + stat.data[2],
         ready: stat.data[6] + stat.data[7] + stat.data[8] + stat.data[9],
       };
       return {
