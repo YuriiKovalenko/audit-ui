@@ -1,6 +1,12 @@
 import { subHours } from 'date-fns';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  timer,
+  combineLatest,
+} from 'rxjs';
+import { switchMap, shareReplay, withLatestFrom } from 'rxjs/operators';
 
 import { DataSource } from '@angular/cdk/table';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -37,11 +43,14 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     const range: [Date, Date] = [subHours(now, 12), now];
     this.timeRangeChange = new BehaviorSubject(range);
     this.schemeStateChange = new Subject();
-    this.rulesService.getRules().subscribe(rules => {
+    this.rulesService.getRules().subscribe((rules) => {
       this.rules = rules;
     });
-    this.statistics$ = this.timeRangeChange.asObservable().pipe(
-      switchMap((timeRange) => {
+    this.statistics$ = combineLatest([
+      this.timeRangeChange.asObservable(),
+      timer(0, 30000),
+    ]).pipe(
+      switchMap(([timeRange]) => {
         const [startDate, endDate] = timeRange;
         return this.statisticsService.getStatisticsHourly(startDate, endDate);
       })
