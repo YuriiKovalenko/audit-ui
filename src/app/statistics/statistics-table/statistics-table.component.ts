@@ -26,8 +26,8 @@ export class StatisticsTableComponent implements OnInit {
       'range',
       'status',
       'start',
-      'checked',
       'covered',
+      'checked',
       'ready',
       // 'working'
     ];

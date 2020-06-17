@@ -25,8 +25,8 @@ export class StatisticsTableDetailedComponent implements OnInit {
       'inspectFailed',
       'readyFailed',
       'start',
-      'checked',
       'covered',
+      'checked',
       'ready',
     ];
   }
