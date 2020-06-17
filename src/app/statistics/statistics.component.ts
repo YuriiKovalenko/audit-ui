@@ -1,4 +1,4 @@
-import { subHours } from 'date-fns';
+import { subHours, addHours } from 'date-fns';
 import {
   BehaviorSubject,
   Observable,
@@ -40,7 +40,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const now = new Date();
-    const range: [Date, Date] = [subHours(now, 12), now];
+    const range: [Date, Date] = [subHours(now, 12), addHours(now, 2)];
     this.timeRangeChange = new BehaviorSubject(range);
     this.schemeStateChange = new Subject();
     this.rulesService.getRules().subscribe(rules => {
