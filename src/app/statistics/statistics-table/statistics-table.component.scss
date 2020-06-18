@@ -14,13 +14,13 @@ table {
 }
 
 .status {
-  width: calc(100% / 3 - 8px);
-  height: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   cursor: pointer;
   display: inline-block;
-  border-radius: 5px;
   &:not(:last-child) {
-    margin-right: 1px;
+    margin-right: 3px;
   }
 
   &.ok {
@@ -42,4 +42,8 @@ table {
 
 .line-indicator {
   color: #f44336;
+}
+
+.mat-column-range {
+  width: 200px;
 }

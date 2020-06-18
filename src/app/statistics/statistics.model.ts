@@ -1,5 +1,8 @@
 export interface Statistics {
   createdAt: Date;
   working: boolean;
-  data: number[];
+  start: number;
+  covered: number;
+  checked: number;
+  ready: number;
 }

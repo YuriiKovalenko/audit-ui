@@ -1,16 +1,32 @@
 <mat-toolbar class="mat-elevation-z6">
-  <h3>Черкаський консервний завод. Цех №1</h3>
-  <img class="logo" src="assets/logo.svg" alt="">
+  <div class="header-title">
+    <img class="logo" src="assets/logo.svg" alt="" />
+    <span>Черкаський консервний завод. Цех №1</span>
+  </div>
   <div class="nav-container">
     <div *ngIf="currentUser" class="nav">
-      <div>Користувач: {{ currentUser.username }}</div>
-      <button mat-button (click)="goAudit()" *ngIf="router.url !== '/audit'">
-        Облік
+      <button mat-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>account_circle</mat-icon>
+        {{ currentUser.username }}
+        <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <button mat-button (click)="goSetup()" *ngIf="currentUser.isAdmin && router.url !== '/rules'">
-        Налаштування
-      </button>
-      <button mat-button (click)="signOut()">Вийти</button>
+      <mat-menu #appMenu>
+        <button
+          mat-menu-item
+          (click)="goAudit()"
+          *ngIf="router.url !== '/audit'"
+        >
+          Облік
+        </button>
+        <button
+          mat-menu-item
+          (click)="goSetup()"
+          *ngIf="currentUser.isAdmin && router.url !== '/rules'"
+        >
+          Налаштування
+        </button>
+        <button mat-menu-item (click)="signOut()">Вийти</button>
+      </mat-menu>
     </div>
   </div>
 </mat-toolbar>

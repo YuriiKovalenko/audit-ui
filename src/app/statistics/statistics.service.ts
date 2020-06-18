@@ -34,21 +34,12 @@ export class StatisticsService {
   }
 
   private mapStats(stats: Statistics[]) {
-    return stats.map((stat) => {
-      const res = {
-        ...stat,
-        start: stat.data[3],
-        covered: stat.data[11] + stat.data[12] + stat.data[13],
-        checked: stat.data[0] + stat.data[1] + stat.data[2],
-        ready: stat.data[6] + stat.data[7] + stat.data[8] + stat.data[9],
-      };
-      return {
-        ...res,
-        createdAt: new Date(stat.createdAt),
-        fillFailed: res.start - res.covered,
-        inspectFailed: res.covered - res.checked,
-        readyFailed: res.checked - res.ready,
-      };
-    });
+    return stats.map(stat => ({
+      ...stat,
+      createdAt: new Date(stat.createdAt),
+      fillFailed: stat.start - stat.covered,
+      inspectFailed: stat.covered - stat.checked,
+      readyFailed: stat.checked - stat.ready,
+    }));
   }
 }

@@ -19,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RulesComponent } from './rules/rules.component';
 import { StatisticsModule } from './statistics/statistics.module';
+import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { StatisticsModule } from './statistics/statistics.module';
     CoreModule,
     MatButtonModule,
     FormsModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

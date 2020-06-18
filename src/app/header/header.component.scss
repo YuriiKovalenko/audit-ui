@@ -2,7 +2,7 @@ mat-toolbar {
   height: 50px;
   position: relative;
   justify-content: space-between;
-  background-color: #006938;
+  background-color: #00796b;
   background-image: url(/assets/header.png);
   color: white;
 }
@@ -11,11 +11,13 @@ mat-toolbar {
   display: flex;
 }
 
-.nav-container {
-  width: 373.5px;
+.header-title {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
 .logo {
-  height: 85%;
-  margin: 3px 0;
+  height: 70%;
+  margin-right: 15px;
 }

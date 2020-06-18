@@ -1,6 +1,6 @@
 .scheme {
   // background-color: #fafafa;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 15px;
   height: 230px;
   box-sizing: border-box;
@@ -19,39 +19,39 @@
 
     &-part {
       height: 100%;
-      width: 35%;
       position: absolute;
       z-index: 1;
-      // opacity: 50%;
+      padding: 10px;
+      box-sizing: border-box;
       color: transparent;
+      transition: all 0.1s ease-out, color 0s, padding 0s;
 
       &.fill-failed {
-        left: calc(20% - 30px);
-        width: calc(36% - 25px);
+        left: 115px;
+        width: 335px;
       }
 
       &.inspect-failed {
-        left: calc(49% - 60px);
-        width: calc(32% - 40px);
+        left: 375px;
+        width: 285px;
       }
 
       &.ready-failed {
-        left: calc(65% - 50px);
-        width: calc(30% - 50px);
-        width: 33%;
+        left: 590px;
+        width: 295px;
       }
 
       &.show {
-        border: 2px solid blue;
-        color: black;
-        background-color: rgba(160, 160, 160, 50%);
+        color: rgb(245, 47, 47);
+        background-color: rgba(64, 139, 224, 0.356);
+        border: 4px dashed rgba(64, 139, 224, 0.753);
       }
     }
   }
 
   svg {
     // transform: scale(0.85);
-    margin: auto;
+    height: auto;
     display: block;
     z-index: 10;
   }

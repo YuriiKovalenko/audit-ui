@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { DatetimeSelectorComponent } from './datetime-selector/datetime-selector.component';
 import { SchemeComponent } from './scheme/scheme.component';
@@ -48,6 +49,7 @@ import { StatisticsComponent } from './statistics.component';
     MatSidenavModule,
     MatButtonModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
   entryComponents: [StatisticsTableDetailedComponent],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'uk-UA'} ]

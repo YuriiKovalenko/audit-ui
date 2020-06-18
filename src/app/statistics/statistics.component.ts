@@ -6,7 +6,7 @@ import {
   timer,
   combineLatest,
 } from 'rxjs';
-import { switchMap, shareReplay, withLatestFrom } from 'rxjs/operators';
+import { switchMap, shareReplay, withLatestFrom, catchError } from 'rxjs/operators';
 
 import { DataSource } from '@angular/cdk/table';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -53,7 +53,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       switchMap(([timeRange]) => {
         const [startDate, endDate] = timeRange;
         return this.statisticsService.getStatisticsHourly(startDate, endDate);
-      })
+      }),
+      catchError(() => this.statistics$),
     );
   }
 
