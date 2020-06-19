@@ -3,6 +3,17 @@
     <app-datetime-selector
       [timeRange]="timeRangeChange"
     ></app-datetime-selector>
+    <mat-divider></mat-divider>
+    <div class="summary" *ngIf="summary">
+      <div class="summary-item">
+        <span>Законсервовано:</span>
+        <span class="summary-item-value">{{ summary.covered }}</span>
+      </div>
+      <div class="summary-item">
+        <span>Готово:</span>
+        <span class="summary-item-value">{{ summary.ready }}</span>
+      </div>
+    </div>
   </mat-drawer>
   <mat-drawer-content>
     <app-scheme [stateChange]="schemeStateChange.asObservable()"></app-scheme>

@@ -24,6 +24,7 @@ import {
 } from './statistics-table-detailed/statistics-table-detailed.component';
 import { StatisticsTableComponent } from './statistics-table/statistics-table.component';
 import { StatisticsComponent } from './statistics.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { StatisticsComponent } from './statistics.component';
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
+    MatDividerModule,
   ],
   entryComponents: [StatisticsTableDetailedComponent],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'uk-UA'} ]

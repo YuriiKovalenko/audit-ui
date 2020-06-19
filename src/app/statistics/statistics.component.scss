@@ -6,3 +6,15 @@
 mat-drawer {
   background-color: #fafafa;
 }
+
+.summary {
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    &-value {
+      font-weight: bold;
+    }
+  }
+}

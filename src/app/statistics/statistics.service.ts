@@ -33,8 +33,17 @@ export class StatisticsService {
       .pipe(map((statistics) => this.mapStats(statistics)));
   }
 
+  public getSummary(startDate: Date, endDate: Date) {
+    return this.http.get<Statistics>('/statistics/summary', {
+      params: {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+      },
+    });
+  }
+
   private mapStats(stats: Statistics[]) {
-    return stats.map(stat => ({
+    return stats.map((stat) => ({
       ...stat,
       createdAt: new Date(stat.createdAt),
       fillFailed: stat.start - stat.covered,

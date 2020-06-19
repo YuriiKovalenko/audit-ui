@@ -5,8 +5,14 @@ import {
   Subject,
   timer,
   combineLatest,
+  Subscription,
 } from 'rxjs';
-import { switchMap, shareReplay, withLatestFrom, catchError } from 'rxjs/operators';
+import {
+  switchMap,
+  shareReplay,
+  withLatestFrom,
+  catchError,
+} from 'rxjs/operators';
 
 import { DataSource } from '@angular/cdk/table';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -29,6 +35,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   public statistics$: Observable<Statistics[]>;
   public timeRangeChange: BehaviorSubject<[Date, Date]>;
   public schemeStateChange: Subject<any>;
+  public summary: Statistics;
+  public summarySub: Subscription;
   public rules: Rule[];
 
   constructor(
@@ -43,23 +51,40 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     const range: [Date, Date] = [subHours(now, 12), addHours(now, 2)];
     this.timeRangeChange = new BehaviorSubject(range);
     this.schemeStateChange = new Subject();
-    this.rulesService.getRules().subscribe(rules => {
+    this.rulesService.getRules().subscribe((rules) => {
       this.rules = rules;
     });
+    this.summarySub = combineLatest([
+      this.timeRangeChange.asObservable(),
+      timer(0, 30000),
+    ])
+      .pipe(
+        switchMap(([timeRange]) => {
+          console.log('emitted');
+          const [startDate, endDate] = timeRange;
+          return this.statisticsService.getSummary(startDate, endDate);
+        })
+      )
+      .subscribe(
+        (sum) => (this.summary = sum),
+        () => {}
+      );
     this.statistics$ = combineLatest([
       this.timeRangeChange.asObservable(),
       timer(0, 30000),
     ]).pipe(
       switchMap(([timeRange]) => {
+        console.log('emitted1');
         const [startDate, endDate] = timeRange;
         return this.statisticsService.getStatisticsHourly(startDate, endDate);
       }),
-      catchError(() => this.statistics$),
+      catchError(() => this.statistics$)
     );
   }
 
   ngOnDestroy() {
     this.timeRangeChange.complete();
+    this.summarySub.unsubscribe();
   }
 
   onRangeChange(value) {
