@@ -10,19 +10,26 @@
       </button>
       <mat-menu #appMenu>
         <div mat-menu-item>
-          <mat-icon>account_circle</mat-icon>
+          <mat-icon color="primary">account_circle</mat-icon>
           {{ currentUser.username }}
         </div>
         <button
           mat-menu-item
-          (click)="goAudit()"
+          routerLink="audit"
           *ngIf="router.url !== '/audit'"
         >
           Облік
         </button>
         <button
           mat-menu-item
-          (click)="goSetup()"
+          routerLink="food-calculator"
+          *ngIf="router.url !== '/food-calculator'"
+        >
+          Розрахунок продукції
+        </button>
+        <button
+          mat-menu-item
+          routerLink="rules"
           *ngIf="currentUser.isAdmin && router.url !== '/rules'"
         >
           Налаштування

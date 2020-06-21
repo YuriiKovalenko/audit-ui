@@ -1,1 +1,60 @@
-<p>food-calculator works!</p>
+<mat-drawer-container class="stats-container">
+  <mat-drawer mode="side" [opened]="true" class="mat-elevation-z4">
+    <app-datetime-selector
+      [timeRange]="timeRangeChange"
+    ></app-datetime-selector>
+    <mat-divider></mat-divider>
+    <div class="covered">
+      <span>Банок законсервовано:</span>
+      <b>{{ coveredAmount }}</b>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="food-calculator">
+      <mat-card>
+        <mat-card-title>
+          Розрахунок сировини продукції
+        </mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Назва інградієнту</mat-label>
+              <input type="text" matInput [(ngModel)]="foodName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Кількість (грам)</mat-label>
+              <input type="number" matInput [(ngModel)]="foodWeight" />
+            </mat-form-field>
+            <button mat-flat-button color="primary" (click)="addNewFoodItem()">
+              Додати
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="food-lists">
+            <mat-list class="food-list">
+              <h3 matSubheader>Вхідні дані на банку</h3>
+              <mat-list-item *ngFor="let food of foodItems; let i = index">
+                <div>{{ food.name }}: {{ food.weight }} грам</div>
+                <button
+                  mat-icon-button
+                  color="accent"
+                  (click)="removeFoodItem(i)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+            <mat-list class="food-list">
+              <h3 matSubheader>Результат за період</h3>
+              <mat-list-item
+                *ngFor="let food of calculatedFoodItems; let i = index"
+              >
+                <div>{{ food.name }}: {{ food.weight }} грам</div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

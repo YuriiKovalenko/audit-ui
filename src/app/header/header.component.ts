@@ -35,14 +35,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  public goAudit() {
-    this.router.navigate(['audit']);
-  }
-
-  public goSetup() {
-    this.router.navigate(['rules']);
-  }
-
   public signOut() {
     this.authService.unauthorize();
   }

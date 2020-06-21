@@ -22,6 +22,8 @@ import { StatisticsModule } from './statistics/statistics.module';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { FoodCalculatorComponent } from './food-calculator/food-calculator.component';
+import { SharedModule } from './shared/shared.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { FoodCalculatorComponent } from './food-calculator/food-calculator.compo
     FormsModule,
     MatIconModule,
     MatMenuModule,
+    SharedModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

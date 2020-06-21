@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RulesComponent } from './rules/rules.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { FoodCalculatorComponent } from './food-calculator/food-calculator.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate: [AuthGuard],
     component: DashboardComponent,
+  },
+  {
+    path: 'food-calculator',
+    canActivate: [AuthGuard],
+    component: FoodCalculatorComponent,
   },
   {
     path: '**',
