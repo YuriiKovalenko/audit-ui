@@ -6,11 +6,13 @@
   <div class="nav-container">
     <div *ngIf="currentUser" class="nav">
       <button mat-button [matMenuTriggerFor]="appMenu">
-        <mat-icon>account_circle</mat-icon>
-        {{ currentUser.username }}
-        <mat-icon>arrow_drop_down</mat-icon>
+        Меню
       </button>
       <mat-menu #appMenu>
+        <div mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          {{ currentUser.username }}
+        </div>
         <button
           mat-menu-item
           (click)="goAudit()"

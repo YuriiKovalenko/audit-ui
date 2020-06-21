@@ -5,12 +5,13 @@
       [ngxMatDatetimePicker]="pickerStart"
       placeholder="Початкова дата"
       formControlName="startDate"
+      readonly
     />
     <mat-datepicker-toggle
       matSuffix
       [for]="pickerStart"
     ></mat-datepicker-toggle>
-    <ngx-mat-datetime-picker [showSeconds]="true" #pickerStart>
+    <ngx-mat-datetime-picker [showSeconds]="true" #pickerStart disabled="false">
     </ngx-mat-datetime-picker>
   </mat-form-field>
   <mat-form-field>
@@ -19,9 +20,10 @@
       [ngxMatDatetimePicker]="pickerEnd"
       placeholder="Кінцева дата"
       formControlName="endDate"
+      readonly
     />
     <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-    <ngx-mat-datetime-picker [showSeconds]="true" #pickerEnd>
+    <ngx-mat-datetime-picker [showSeconds]="true" #pickerEnd disabled="false">
     </ngx-mat-datetime-picker>
   </mat-form-field>
 </form>

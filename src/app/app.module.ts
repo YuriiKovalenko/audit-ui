@@ -21,6 +21,7 @@ import { RulesComponent } from './rules/rules.component';
 import { StatisticsModule } from './statistics/statistics.module';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { FoodCalculatorComponent } from './food-calculator/food-calculator.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
     HeaderComponent,
     RulesComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FoodCalculatorComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {
   timer,
   combineLatest,
   Subscription,
+  of,
 } from 'rxjs';
 import {
   switchMap,
@@ -60,21 +61,22 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     ])
       .pipe(
         switchMap(([timeRange]) => {
-          console.log('emitted');
           const [startDate, endDate] = timeRange;
           return this.statisticsService.getSummary(startDate, endDate);
-        })
+        }),
+        catchError(() => of(this.summary)),
       )
       .subscribe(
-        (sum) => (this.summary = sum),
-        () => {}
+        sum => (this.summary = sum),
+        err => {
+          console.log(err);
+        }
       );
     this.statistics$ = combineLatest([
       this.timeRangeChange.asObservable(),
       timer(0, 30000),
     ]).pipe(
       switchMap(([timeRange]) => {
-        console.log('emitted1');
         const [startDate, endDate] = timeRange;
         return this.statisticsService.getStatisticsHourly(startDate, endDate);
       }),
