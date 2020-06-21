@@ -18,9 +18,11 @@ export class FoodCalculatorComponent implements OnInit, OnDestroy {
   public foodWeight: number;
   public coveredAmount: number;
   public calcSub: Subscription;
+  public sum: number;
 
   constructor(private readonly statisticsService: StatisticsService) {
     this.foodItems = [];
+    this.sum = 0;
   }
 
   ngOnInit(): void {
@@ -62,9 +64,13 @@ export class FoodCalculatorComponent implements OnInit, OnDestroy {
   }
 
   public updateCalculatedFoodItem() {
-    this.calculatedFoodItems = this.foodItems.map((item) => ({
+    this.calculatedFoodItems = this.foodItems.map(item => ({
       ...item,
       weight: item.weight * this.coveredAmount,
     }));
+    this.sum = this.calculatedFoodItems.reduce<number>(
+      (sum, item) => (sum += item.weight),
+      0
+    ) / 1000;
   }
 }
