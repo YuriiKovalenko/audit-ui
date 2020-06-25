@@ -1,0 +1,12 @@
+<div>
+  <canvas
+    *ngIf="!loading"
+    baseChart
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+    [legend]="true"
+    chartType="bar"
+  >
+  </canvas>
+</div>

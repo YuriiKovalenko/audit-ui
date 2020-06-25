@@ -14,25 +14,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RulesComponent } from './rules/rules.component';
 import { StatisticsModule } from './statistics/statistics.module';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { FoodCalculatorComponent } from './food-calculator/food-calculator.component';
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RulesComponent,
-    DashboardComponent,
     NotFoundComponent,
-    FoodCalculatorComponent
+    FoodCalculatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,8 +52,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     SharedModule,
     MatSidenavModule,
+    DashboardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

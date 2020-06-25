@@ -1,1 +1,5 @@
 <p>dashboard works!</p>
+<app-datetime-selector [timeRange]="timeRangeChange"></app-datetime-selector>
+<app-covered-chart
+  [timeRange$]="timeRangeChange.asObservable()"
+></app-covered-chart>

@@ -15,6 +15,13 @@
         </div>
         <button
           mat-menu-item
+          routerLink="dashboard"
+          *ngIf="router.url !== '/dashboard'"
+        >
+          Дашборд
+        </button>
+        <button
+          mat-menu-item
           routerLink="audit"
           *ngIf="router.url !== '/audit'"
         >
