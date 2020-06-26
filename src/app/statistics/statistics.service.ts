@@ -42,6 +42,18 @@ export class StatisticsService {
     });
   }
 
+  public getLine3(startDate: Date, endDate: Date) {
+    return this.http.get<{ covered: number; checked: number }>(
+      '/statistics/line3',
+      {
+        params: {
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
+        },
+      }
+    );
+  }
+
   private mapStats(stats: Statistics[]) {
     return stats.map((stat) => ({
       ...stat,

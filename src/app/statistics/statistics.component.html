@@ -14,6 +14,18 @@
         <span class="summary-item-value">{{ summary.ready }}</span>
       </div>
     </div>
+    <mat-divider></mat-divider>
+    <div class="summary" *ngIf="line3">
+      <div class="line-title">Посольський горошок (закаточна машина 3)</div>
+      <div class="summary-item">
+        <span>Законсервовано:</span>
+        <span class="summary-item-value">{{ line3.covered }}</span>
+      </div>
+      <div class="summary-item">
+        <span>Перевірено:</span>
+        <span class="summary-item-value">{{ line3.checked }}</span>
+      </div>
+    </div>
   </mat-drawer>
   <mat-drawer-content>
     <app-scheme [stateChange]="schemeStateChange.asObservable()"></app-scheme>

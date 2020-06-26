@@ -33,7 +33,12 @@ export class CoveredChartComponent implements OnInit, OnDestroy {
       )
       .subscribe((data) => this.updateChart(data));
     this.chartOptions = {
-      title: { text: 'Кількість закатаних' },
+      title: {
+        text: 'Кількість закатаних банок',
+        display: true,
+        fontFamily: 'Roboto, "Helvetica Neue", sans-serif',
+        fontSize: 14,
+      },
       responsive: true,
     };
   }
@@ -43,7 +48,6 @@ export class CoveredChartComponent implements OnInit, OnDestroy {
   }
 
   private updateChart(data: Statistics[]) {
-    console.log('a');
     this.chartLabels = data.map((stat) => stat.createdAt.getHours().toString());
     this.chartData = [{ data: data.map((stat) => stat.covered) }];
     this.loading = false;

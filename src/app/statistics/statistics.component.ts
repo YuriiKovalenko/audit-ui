@@ -37,7 +37,9 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   public timeRangeChange: BehaviorSubject<[Date, Date]>;
   public schemeStateChange: Subject<any>;
   public summary: Statistics;
-  public summarySub: Subscription;
+  private summarySub: Subscription;
+  public line3: { covered: number; checked: number };
+  private line3Sub: Subscription;
   public rules: Rule[];
 
   constructor(
@@ -64,11 +66,11 @@ export class StatisticsComponent implements OnInit, OnDestroy {
           const [startDate, endDate] = timeRange;
           return this.statisticsService.getSummary(startDate, endDate);
         }),
-        catchError(() => of(this.summary)),
+        catchError(() => of(this.summary))
       )
       .subscribe(
-        sum => (this.summary = sum),
-        err => {
+        (sum) => (this.summary = sum),
+        (err) => {
           console.log(err);
         }
       );
@@ -82,6 +84,18 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       }),
       catchError(() => this.statistics$)
     );
+    this.line3Sub = combineLatest([
+      this.timeRangeChange.asObservable(),
+      timer(0, 30000),
+    ])
+      .pipe(
+        switchMap(([timeRange]) => {
+          const [startDate, endDate] = timeRange;
+          return this.statisticsService.getLine3(startDate, endDate);
+        }),
+        catchError(() => of(this.line3))
+      )
+      .subscribe((data) => (this.line3 = data));
   }
 
   ngOnDestroy() {
