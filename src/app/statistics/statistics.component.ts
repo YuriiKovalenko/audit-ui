@@ -13,6 +13,7 @@ import {
   shareReplay,
   withLatestFrom,
   catchError,
+  pluck,
 } from 'rxjs/operators';
 
 import { DataSource } from '@angular/cdk/table';
@@ -38,8 +39,8 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   public schemeStateChange: Subject<any>;
   public summary: Statistics;
   private summarySub: Subscription;
-  public line3: { covered: number; checked: number };
-  private line3Sub: Subscription;
+  public lines: number[];
+  private linesSub: Subscription;
   public rules: Rule[];
 
   constructor(
@@ -84,26 +85,35 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       }),
       catchError(() => this.statistics$)
     );
-    this.line3Sub = combineLatest([
+    this.linesSub = combineLatest([
       this.timeRangeChange.asObservable(),
       timer(0, 30000),
     ])
       .pipe(
         switchMap(([timeRange]) => {
           const [startDate, endDate] = timeRange;
-          return this.statisticsService.getLine3(startDate, endDate);
+          return this.statisticsService.getLines(startDate, endDate);
         }),
-        catchError(() => of(this.line3))
+        pluck('lines'),
+        catchError(() => of(this.lines))
       )
-      .subscribe((data) => (this.line3 = data));
+      .subscribe((data) => (this.lines = data));
   }
 
   ngOnDestroy() {
     this.timeRangeChange.complete();
     this.summarySub.unsubscribe();
+    this.linesSub.unsubscribe();
   }
 
   onRangeChange(value) {
     this.timeRangeChange.next(value);
+  }
+
+  getReport() {
+    const [start, end] = this.timeRangeChange.getValue();
+    window.open(
+      `/api/statistics/report?startDate=${start.toISOString()}&endDate=${end.toISOString()}`
+    );
   }
 }

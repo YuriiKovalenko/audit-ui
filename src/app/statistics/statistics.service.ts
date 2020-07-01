@@ -42,9 +42,9 @@ export class StatisticsService {
     });
   }
 
-  public getLine3(startDate: Date, endDate: Date) {
-    return this.http.get<{ covered: number; checked: number }>(
-      '/statistics/line3',
+  public getLines(startDate: Date, endDate: Date) {
+    return this.http.get<{ lines: number[] }>(
+      '/statistics/lines',
       {
         params: {
           startDate: startDate.toISOString(),

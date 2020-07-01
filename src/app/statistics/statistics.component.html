@@ -4,9 +4,16 @@
       [timeRange]="timeRangeChange"
     ></app-datetime-selector>
     <mat-divider></mat-divider>
+    <div class="summary" *ngFor="let line of lines; let idx = index">
+      <div class="summary-item">
+        <span>Закаточна машина {{ idx + 1 }}:</span>
+        <span class="summary-item-value">{{ line }}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
     <div class="summary" *ngIf="summary">
       <div class="summary-item">
-        <span>Законсервовано:</span>
+        <span>Закатано:</span>
         <span class="summary-item-value">{{ summary.covered }}</span>
       </div>
       <div class="summary-item">
@@ -15,17 +22,14 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    <div class="summary" *ngIf="line3">
-      <div class="line-title">Посольський горошок (закаточна машина 3)</div>
-      <div class="summary-item">
-        <span>Законсервовано:</span>
-        <span class="summary-item-value">{{ line3.covered }}</span>
-      </div>
-      <div class="summary-item">
-        <span>Перевірено:</span>
-        <span class="summary-item-value">{{ line3.checked }}</span>
-      </div>
-    </div>
+    <button
+      mat-flat-button
+      color="accent"
+      class="download-button"
+      (click)="getReport()"
+    >
+      Завантажити звіт Excel
+    </button>
   </mat-drawer>
   <mat-drawer-content>
     <app-scheme [stateChange]="schemeStateChange.asObservable()"></app-scheme>

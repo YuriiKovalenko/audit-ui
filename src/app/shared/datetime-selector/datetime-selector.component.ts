@@ -12,12 +12,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class DatetimeSelectorComponent implements OnInit {
   public form: FormGroup;
   @Input() timeRange: BehaviorSubject<[Date, Date]>;
+  @Input() display: 'block' | 'inline-block';
 
   constructor() {
     this.form = new FormGroup({
       startDate: new FormControl(),
       endDate: new FormControl(),
     });
+    this.display = 'block';
   }
 
   ngOnInit(): void {

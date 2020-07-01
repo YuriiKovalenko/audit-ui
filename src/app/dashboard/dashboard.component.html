@@ -1,4 +1,7 @@
-<app-datetime-selector [timeRange]="timeRangeChange"></app-datetime-selector>
+<app-datetime-selector
+  [timeRange]="timeRangeChange"
+  display="inline-block"
+></app-datetime-selector>
 <mat-card class="dashboard-block dashboard-chart">
   <app-covered-chart
     [timeRange$]="timeRangeChange.asObservable()"

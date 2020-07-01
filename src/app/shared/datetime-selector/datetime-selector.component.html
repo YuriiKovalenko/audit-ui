@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <mat-form-field>
+  <mat-form-field [style.display]="display">
     <input
       matInput
       [ngxMatDatetimePicker]="pickerStart"
@@ -14,7 +14,7 @@
     <ngx-mat-datetime-picker [showSeconds]="true" #pickerStart disabled="false">
     </ngx-mat-datetime-picker>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field [style.display]="display">
     <input
       matInput
       [ngxMatDatetimePicker]="pickerEnd"
