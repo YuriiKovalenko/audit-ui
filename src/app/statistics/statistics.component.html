@@ -22,13 +22,22 @@
       </div>
     </div>
     <mat-divider></mat-divider>
+    <div class="title">Звіт в Excel</div>
+    <mat-form-field class="summary-item">
+      <mat-label>Вибір інтервалу</mat-label>
+      <mat-select aria-label="Вибір інтервалу" [(ngModel)]="interval">
+        <mat-option *ngFor="let interval of intervals" [value]="interval">
+          {{ interval.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button
-      mat-flat-button
+      mat-raised-button
       color="accent"
       class="download-button"
       (click)="getReport()"
     >
-      Завантажити звіт Excel
+      Згенерувати
     </button>
   </mat-drawer>
   <mat-drawer-content>

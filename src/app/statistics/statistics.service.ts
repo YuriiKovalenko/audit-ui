@@ -24,10 +24,12 @@ export class StatisticsService {
 
   public getStatisticsHourly(startDate: Date, endDate: Date) {
     return this.http
-      .get<Statistics[]>(`/statistics/hourly`, {
+      .get<Statistics[]>(`/statistics/interval`, {
         params: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),
+          key: 'hour',
+          interval: '1',
         },
       })
       .pipe(map((statistics) => this.mapStats(statistics)));
@@ -43,15 +45,12 @@ export class StatisticsService {
   }
 
   public getLines(startDate: Date, endDate: Date) {
-    return this.http.get<{ lines: number[] }>(
-      '/statistics/lines',
-      {
-        params: {
-          startDate: startDate.toISOString(),
-          endDate: endDate.toISOString(),
-        },
-      }
-    );
+    return this.http.get<{ lines: number[] }>('/statistics/lines', {
+      params: {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+      },
+    });
   }
 
   private mapStats(stats: Statistics[]) {

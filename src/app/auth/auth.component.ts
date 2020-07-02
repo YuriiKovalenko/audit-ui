@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
   public password: string;
 
   constructor(private readonly authService: AuthService) {
-    this.showPassword = true;
+    this.showPassword = false;
   }
 
   ngOnInit(): void {
